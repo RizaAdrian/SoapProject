@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:8080/soapws/vaccines.wsdl"
+           targetNamespace="http://localhost:8080/soapws/vaccines.wsdl" elementFormDefault="qualified">
+
+    <xs:element name="getVaccineByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getVaccineByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vaccineInfo" type="tns:vaccineInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="vaccineInfo">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="phone" type="xs:long"/>
+            <xs:element name="model" type="xs:string"/>
+            <xs:element name="serialNumber" type="xs:string"/>
+            <xs:element name="purchaseDate" type="xs:date"/>
+            <xs:element name="purchasePrice" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllVaccineRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllVaccineResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vaccineInfo" type="tns:vaccineInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="addVaccineRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="phone" type="xs:long"/>
+                <xs:element name="model" type="xs:string"/>
+                <xs:element name="serialNumber" type="xs:long"/>
+                <xs:element name="purchaseDate" type="xs:date"/>
+                <xs:element name="purchasePrice" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addVaccineResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="vaccineInfo" type="tns:vaccineInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVaccineRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vaccineInfo" type="tns:vaccineInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateVaccineResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteVaccineRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteVaccineResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="searchRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="text" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="searchResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vaccineInfo" type="tns:vaccineInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
